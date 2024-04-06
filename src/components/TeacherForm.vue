@@ -11,10 +11,31 @@
             </ul>
         </div>
         <input type="checkbox" v-model="teacher.doc" />Documentación Entregada
-        <button>Agregar</button>
+        <button @click="handleAddTeacher">Agregar</button>
     </section>
     <section>
         <h3>Listado de profesores</h3>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Materias</th>
+                <th>Documentación Entregada</th>
+            </tr>
+            <tr v-for="elm in teachers" :key="elm.dni">
+                <th>{{ elm.teacherName }}</th>
+                <th>{{ elm.surname }}</th>
+                <th>{{ elm.dni }}</th>
+                <th>
+                    <ul>
+                        <li v-for="(item,i) in elm.subjects" :key="i">{{ item }}</li>
+                    </ul>
+                </th>
+                <th v-if="elm.doc">Entregada</th>
+                <th v-else>No Entregada</th>
+            </tr>
+        </table>
     </section>
 </template>
 
@@ -44,6 +65,15 @@
     const handleSubject = () => {
         teacher.value.subjects.push(subject.value)
         subject.value=''
+    }
+
+    const handleAddTeacher = () => {
+        teachers.value.push(teacher.value)
+        teacher.value.teacherName = ''
+        teacher.value.surname = ''
+        teacher.value.dni = ''
+        teacher.value.subjects = []
+        teacher.value.doc = false
     }
 </script>
 
