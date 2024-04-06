@@ -1,11 +1,10 @@
 <template>
-    Hello Vue3
+    <TeacherForm />
 </template>
 
-<script lang="ts">
-
+<script lang="ts" setup>
+    import TeacherForm from './components/TeacherForm.vue';
 </script>
 
 <style>
-
 </style>
