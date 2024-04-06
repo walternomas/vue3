@@ -68,7 +68,13 @@
     }
 
     const handleAddTeacher = () => {
-        teachers.value.push(teacher.value)
+        teachers.value.push({
+            teacherName: teacher.value.teacherName,
+            surname: teacher.value.surname,
+            dni: teacher.value.dni,
+            subjects: teacher.value.subjects,
+            doc: teacher.value.doc
+        })
         teacher.value.teacherName = ''
         teacher.value.surname = ''
         teacher.value.dni = ''
